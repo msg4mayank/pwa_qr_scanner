@@ -1,8 +1,0 @@
-{
-  "projects": {
-    "default": "pepciso",
-    "pepcico": "pepcico-c6f62",
-    "build": "pepsico-4b65d",
-    "pepsico": "pepsico-4b65d"
-  }
-}
