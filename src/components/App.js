@@ -1,88 +1,108 @@
 import React, { Component } from "react";
 import QrReader from 'react-qr-scanner';
-
+import axios from 'axios';
 
 import ItemsList from "./ItemsList";
 
 
 class App extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-          delay: 100,
-          result: null,
-          isCamraEnable: false,
-          items: []
-        }
-     
-        this.handleScan = this.handleScan.bind(this)
-      }
-  
+  constructor(props) {
+    super(props)
+    this.state = {
+      delay: 100,
+      result: null,
+      isCamraEnable: false,
+      items: []
+    }
+
+    this.handleScan = this.handleScan.bind(this)
+  }
+
   componentDidMount = () => {
 
   };
 
-  handleScan(data){
-      if (data) {
-        
-        this.setState({
-            result: data
-          })
-      }
-    
+  handleScan(data) {
+    if (data) {
+
+      this.setState({
+        result: data
+      })
+    }
+
   }
-  handleError(err){
+  handleError(err) {
     console.error(err)
   }
+  handleClick = () => {
 
+    console.log("Handle Click");
+    const data = {
+      firstName: "Sachin",
+      lastName: "Test"
+    }
+
+
+    this.setState({
+      result: data
+    })
+    axios.post('http://localhost:9090', data)
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
   handerCamra() {
     this.setState({
-        isCamraEnable: true
+      isCamraEnable: true
     })
   }
 
   render() {
     const previewStyle = {
-        height: 100,
-        width: 320,
-      }
+      height: 100,
+      width: 320,
+    }
     return (
-        <div className="container-fluid bg-color">
-            <div className="row-fluid">
-                <div className="col-12">
-                    {!this.state.result && (
-                        <div className="device-container">
-                            <h2>SCAN you bar code</h2>
-                            <div className="camra-section">
-                                {this.state.isCamraEnable && (
-                                    <QrReader
-                                    delay={this.state.delay}
-                                    onError={this.handleError}
-                                    onScan={this.handleScan}
-                                    />
-                                )}
-                            </div>
-                            <button className="btn btn-warning btn-lg" onClick={()=> this.handerCamra()}>
-                                {this.state.isCamraEnable ? 'Scan Me': 'Scan QR Code'}
-                            </button>
-                        </div>
-                    )}
-                    {this.state.result}
-                    {/* {this.state.result && ( */}
-                        <div className="products-cotainer">
-                            <ItemsList scanData={this.state.result}></ItemsList>
-                        </div>
-                    {/* )} */}
+      <div className="container-fluid bg-color">
+        <div className="row-fluid">
+          <div className="col-12">
+            {!this.state.result && (
+              <div className="device-container">
+                <h2>SCAN you bar code</h2>
+                <div className="camra-section">
+                  {this.state.isCamraEnable && (
+                    <QrReader
+                      delay={this.state.delay}
+                      onError={this.handleError}
+                      onScan={this.handleScan}
+                    />
+                  )}
                 </div>
+                <button className="btn btn-warning btn-lg" onClick={() => this.handerCamra()}>
+                  {this.state.isCamraEnable ? 'Scan Me' : 'Scan QR Code'}
+                </button>
+              </div>
+            )}
+            {this.state.result}
+            {/* {this.state.result && ( */}
+            <div className="products-cotainer">
+              <ItemsList scanData={this.state.result}></ItemsList>
             </div>
-            {/* <QrReader
+            {/* )} */}
+          </div>
+        </div>
+        {/* <QrReader
             delay={this.state.delay}
             style={previewStyle}
             onError={this.handleError}
             onScan={this.handleScan}
             />
             <h1>{this.state.result}</h1> */}
-        </div>
+        <button onClick={this.handleClick}>Click Me</button>
+      </div>
     );
   }
 }
