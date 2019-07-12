@@ -24,7 +24,6 @@ class App extends Component {
 
   handleScan(data) {
     if (data) {
-
       this.setState({
         result: data
       })
@@ -36,17 +35,9 @@ class App extends Component {
   }
   handleClick = () => {
 
-    console.log("Handle Click");
-    const data = {
-      firstName: "Sachin",
-      lastName: "Test"
-    }
-
-
-    this.setState({
-      result: data
-    })
-    axios.post('http://localhost:9090', data)
+    console.log("Handle Click result", this.state.result);
+    
+    axios.post('http://localhost:9090', this.state.result)
       .then(function (response) {
         console.log(response);
       })
@@ -61,10 +52,10 @@ class App extends Component {
   }
 
   render() {
-    const previewStyle = {
+    /* const previewStyle = {
       height: 100,
       width: 320,
-    }
+    } */
     return (
       <div className="container-fluid bg-color">
         <div className="row-fluid">

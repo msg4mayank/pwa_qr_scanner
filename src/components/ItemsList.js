@@ -1,12 +1,23 @@
 import React, { Component } from "react";
-import cart1 from '../images/img0.png'
+import img0 from '../images/img0.png'
+import img1 from '../images/img1.png'
+import img2 from '../images/img2.png'
+
 
 class ItemsList extends Component {
     state = {
-        scanData:''
+        scanData:'',
+        items: [
+            {imgUrl: '/images/img0.png', imgTitle:'', title: 'List-based media 1', detail: 'Cras sit amet nibh libero. Nulla vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.'},
+            {imgUrl: '/images/img1.png', imgTitle:'', title: 'List-based media 2', detail: 'Cras sit amet nibh libero. Nulla vulputate at, tempus viverra turpis.'}
+        ]
     }
     componentDidMount(){}
     componentWillReceiveProps(nextProps) {
+        console.log('scanData', nextProps)
+        this.setState({
+            scanData: nextProps.scanData
+        })
         if(nextProps.scanData !== this.props.scanData){
             console.log('nextProps updated', nextProps)
             this.setState({
@@ -14,8 +25,8 @@ class ItemsList extends Component {
             })
         }
     }
-    handleData = ()=> {
-        alert('sdf')
+    handleData(item) {
+        console.log('item', item)
     }
     render() {
         return(
@@ -23,20 +34,19 @@ class ItemsList extends Component {
                 {/* <h3 className="hdr">Self ID:  <span>7</span> Pusher ID: <span> 3</span></h3> */}
                 <h3 className="hdr"><span>{this.state.scanData}</span></h3>
                 <ul className="list-unstyled">
-                    <li className="media" onClick={this.handleData}>
-                        <img src={cart1} className="mr-3" alt="..."/>
-                        <div className="media-body">
-                        <h5 className="mt-0 mb-1">List-based media object</h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        </div>
-                    </li>
-                    <li className="media">
-                        <img src={cart1} className="mr-3" alt="..."/>
-                        <div className="media-body">
-                        <h5 className="mt-0 mb-1">List-based media object</h5>
-                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                        </div>
-                    </li>
+                    {this.state.items.map((item, i)=> (
+                        <li className="media" onClick={()=> this.handleData(item)} key={i}>
+                            <img src={img0} className="mr-3" alt={item.imgTitle}/>
+                            <div className="media-body">
+                                <h5 className="mt-0 mb-1">{item.title}</h5>
+                                {item.detail}
+                                
+                            </div>
+                            <i className="fa fa-check" aria-hidden="true"></i>
+                        </li>
+                    ))}
+                    
+
                 </ul>
             </React.Fragment>
         )
