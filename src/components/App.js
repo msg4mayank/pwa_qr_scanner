@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import QrReader from 'react-qr-scanner';
-import axios from 'axios';
 
 import ItemsList from "./ItemsList";
 
@@ -32,18 +31,6 @@ class App extends Component {
   }
   handleError(err) {
     console.error(err)
-  }
-  handleClick = () => {
-
-    console.log("Handle Click result", this.state.result);
-    
-    axios.post('http://localhost:9090', this.state.result)
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
   }
   handerCamra() {
     this.setState({
@@ -77,12 +64,12 @@ class App extends Component {
                 </button>
               </div>
             )}
-            {this.state.result}
-            {/* {this.state.result && ( */}
+            
+            {this.state.result && (
             <div className="products-cotainer">
               <ItemsList scanData={this.state.result}></ItemsList>
             </div>
-            {/* )} */}
+            )}
           </div>
         </div>
         {/* <QrReader
@@ -92,7 +79,6 @@ class App extends Component {
             onScan={this.handleScan}
             />
             <h1>{this.state.result}</h1> */}
-        <button onClick={this.handleClick}>Click Me</button>
       </div>
     );
   }

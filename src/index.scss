@@ -40,16 +40,28 @@ body {
     }
     
 }
+.btn {
+    border-radius: 30px;
+    display: inherit;
+    margin: auto;
+}
 .media {
-    margin: 2px 0;
+    padding: 15px;
     cursor: pointer;
+    border-bottom: 1px solid #b0a6be;
+    
     img {
         width: 100px;
         border: 1px solid #b8a6d2;
     }
 }
+.media:hover {
+    background: #4a336c;
+}
 .products-cotainer {
+    padding: 20px 0;
     .hdr {
+        margin-bottom: 15px;
         span {
             color: #ffc107;
         }
