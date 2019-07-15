@@ -30,50 +30,50 @@ app.use(bodyParser.json())
 app.use(cors());
 // define a simple route
 app.get('/', (req, res) => {
-    res.json({"message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes."});
+  res.json({ "message": "Welcome to Node JS application." });
 });
 
 app.post('/', (req, res) => {
-    //var newCustomer = req.body;
-	console.log(req.body);
-	
-	client.open(function (err) {
-  if (err) {
-    console.error('Could not connect: ' + err.message);
-  } else {
-    console.log('Client connected');
+  //var newCustomer = req.body;
+  console.log(req.body);
 
-    client.on('error', function (err) {
-      console.error(err.message);
-      process.exit(-1);
-    });
+  client.open(function (err) {
+    if (err) {
+      console.error('Could not connect: ' + err.message);
+    } else {
+      console.log('Client connected');
 
-    // any type of data can be sent into a message: bytes, JSON...but the SDK will not take care of the serialization of objects.
-    var message = new Message(JSON.stringify(req.body));
-    // A message can have custom properties that are also encoded and can be used for routing
-    message.properties.add('propertyName', 'propertyValue');
-
-    // A unique identifier can be set to easily track the message in your application
-    message.messageId = uuid.v4();
-
-    console.log('Sending message: ' + message.getData());
-    client.sendEvent(message, function (err) {
-      if (err) {
-        console.error('Could not send: ' + err.toString());
+      client.on('error', function (err) {
+        console.error(err.message);
         process.exit(-1);
-      } else {
-        console.log('Message sent: ' + message.messageId);
-        //process.exit(0);
-      }
-    });
-  }
-});
-	res.json({"message": "You are sending post request."});
-    //res.end("Post Successfully: \n" + JSON.stringify(newCustomer, null, 4));
+      });
+
+      // any type of data can be sent into a message: bytes, JSON...but the SDK will not take care of the serialization of objects.
+      var message = new Message(JSON.stringify(req.body));
+      // A message can have custom properties that are also encoded and can be used for routing
+      message.properties.add('propertyName', 'propertyValue');
+
+      // A unique identifier can be set to easily track the message in your application
+      message.messageId = uuid.v4();
+
+      console.log('Sending message: ' + message.getData());
+      client.sendEvent(message, function (err) {
+        if (err) {
+          console.error('Could not send: ' + err.toString());
+          process.exit(-1);
+        } else {
+          console.log('Message sent: ' + message.messageId);
+          //process.exit(0);
+        }
+      });
+    }
+  });
+  res.json({ "message": "You are sending post request." });
+  //res.end("Post Successfully: \n" + JSON.stringify(newCustomer, null, 4));
 });
 
 // listen for requests
 app.listen(9090, () => {
-    console.log("Server is listening on port 9090");
+  console.log("Server is listening on port 9090");
 });
 
