@@ -4,12 +4,7 @@
 @import '~font-awesome/css/font-awesome.min.css';
 
 body {
-    background: #563d7c;
     font-family: sans-serif;
-    color: #fff;
-}
-.bg-color {
-    
 }
 
 .device-container {
@@ -18,16 +13,13 @@ body {
     align-items: center;
     text-align: center;
     h2 {
-        color: #dcc5ff;
         margin-top: 20px;
     }
     .camra-section {
-        border: 2px solid #7d6b99;
+        border: 1px solid #c8c8c8;
         width: 400px;
         height: 250px;
         margin: 20px 0;
-        box-shadow: 0 0px 5px #412b61;
-        background: #1d0d34;
         video {
             width: 100%;
         }
@@ -35,7 +27,6 @@ body {
     button {
         margin: auto;
         border-radius: 30px;
-        border-color: #73638a;
         border-width: 3px;
     }
     
@@ -45,25 +36,31 @@ body {
     display: inherit;
     margin: auto;
 }
+.btn-save {
+    font-size: 16px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
 .media {
     padding: 15px;
     cursor: pointer;
-    border-bottom: 1px solid #b0a6be;
+    border-bottom: 1px solid #c2c2c2;
+    align-items: center;
     
     img {
         width: 100px;
-        border: 1px solid #b8a6d2;
+    }
+    .fa {
+        color: #007bff;
     }
 }
-.media:hover {
-    background: #4a336c;
-}
+
 .products-cotainer {
     padding: 20px 0;
     .hdr {
         margin-bottom: 15px;
         span {
-            color: #ffc107;
+            color: #007bff;
         }
     }
 }

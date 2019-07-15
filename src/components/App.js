@@ -49,18 +49,18 @@ class App extends Component {
           <div className="col-12">
             {!this.state.result && (
               <div className="device-container">
-                <h2>SCAN you bar code</h2>
                 <div className="camra-section">
                   {this.state.isCamraEnable && (
                     <QrReader
                       delay={this.state.delay}
                       onError={this.handleError}
                       onScan={this.handleScan}
+                      facingMode='front'
                     />
                   )}
                 </div>
-                <button className="btn btn-warning btn-lg" onClick={() => this.handerCamra()}>
-                  {this.state.isCamraEnable ? 'Scan Me' : 'Scan QR Code'}
+                <button className="btn btn-primary btn-lg" onClick={() => this.handerCamra()}>
+                  {this.state.isCamraEnable ? 'ScanMe' : 'Scan to Associate'}
                 </button>
               </div>
             )}
@@ -72,13 +72,6 @@ class App extends Component {
             )}
           </div>
         </div>
-        {/* <QrReader
-            delay={this.state.delay}
-            style={previewStyle}
-            onError={this.handleError}
-            onScan={this.handleScan}
-            />
-            <h1>{this.state.result}</h1> */}
       </div>
     );
   }
