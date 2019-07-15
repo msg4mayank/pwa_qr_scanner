@@ -85,7 +85,7 @@ httpServer.listen(9090, () => {
   console.log("HTTP Server is listening on port 9090");
 });
 httpsServer.listen(9443, () => {
-  console.log("HTTPS Server is listening on port 9090");
+  console.log("HTTPS Server is listening on port 9443");
 });
 
 
