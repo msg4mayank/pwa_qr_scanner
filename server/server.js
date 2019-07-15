@@ -1,4 +1,3 @@
-const express = require('express');
 const bodyParser = require('body-parser');
 var cors = require('cors');
 
@@ -6,7 +5,13 @@ var uuid = require('uuid');
 var Protocol = require('azure-iot-device-mqtt').Mqtt;
 var Client = require('azure-iot-device').Client;
 var Message = require('azure-iot-device').Message;
-
+var fs = require('fs');
+var http = require('http');
+var https = require('https');
+var privateKey = fs.readFileSync('cert/privateKey.key', 'utf8');
+var certificate = fs.readFileSync('cert/certificate.crt', 'utf8');
+var credentials = { key: privateKey, cert: certificate };
+const express = require('express');
 var connectionString = 'HostName=QRSCAN.azure-devices.net;DeviceId=QR_scan;SharedAccessKey=ctMFOExCLgRxAjPldFhFD+He6Ya/0apovJMFakKWxnI=';
 if (!connectionString) {
   console.log('Please set the DEVICE_CONNECTION_STRING environment variable.');
@@ -72,8 +77,19 @@ app.post('/', (req, res) => {
   //res.end("Post Successfully: \n" + JSON.stringify(newCustomer, null, 4));
 });
 
-// listen for requests
-app.listen(9090, () => {
-  console.log("Server is listening on port 9090");
+// listen for 
+var httpServer = http.createServer(app);
+var httpsServer = https.createServer(credentials, app);
+
+httpServer.listen(9090, () => {
+  console.log("HTTP Server is listening on port 9090");
 });
+httpsServer.listen(9443, () => {
+  console.log("HTTPS Server is listening on port 9090");
+});
+
+
+/*app.listen(9090, () => {
+  console.log("Server is listening on port 9090");
+});*/
 
