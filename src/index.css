@@ -1,7 +1,4 @@
-// Import Bootstrap css
-@import '~bootstrap/dist/css/bootstrap.min.css';
-// Import Font Awesome Icons Set
-@import '~font-awesome/css/font-awesome.min.css';
+
 
 body {
     font-family: sans-serif;
@@ -21,9 +18,10 @@ h2 {
     width: 400px;
     height: 250px;
     margin: 20px 0;
-    video {
-        width: 100%;
-    }
+    
+}
+video {
+    width: 100%;
 }
 button {
     margin: auto;
@@ -62,4 +60,13 @@ img {
 }
 .hdr span {
     color: #007bff;
+}
+.inherit-clr {
+    color: inherit;
+    text-decoration: none;
+}
+.fa-camera {
+    margin: 0 10px;
+    font-size: 25px;
+    color: inherit;
 }

@@ -11,7 +11,9 @@ class App extends Component {
       delay: 100,
       result: null,
       isCamraEnable: false,
-      items: []
+      items: [],
+      cameraFlip: false,
+      cameraOption: 'front'
     }
 
     this.handleScan = this.handleScan.bind(this)
@@ -32,11 +34,23 @@ class App extends Component {
   handleError(err) {
     console.error(err)
   }
-  handerCamra() {
+  handerCamera () {
     this.setState({
       isCamraEnable: true
     })
+ 
   }
+
+  handleCameraFlip = (e)=> {
+    e.preventDefault();
+    this.setState({
+      cameraFlip: !this.state.cameraFlip
+    });
+    this.setState({
+      cameraOption: (this.state.cameraFlip ? 'front': 'rear')
+    });
+  }
+
 
   render() {
     /* const previewStyle = {
@@ -55,13 +69,19 @@ class App extends Component {
                       delay={this.state.delay}
                       onError={this.handleError}
                       onScan={this.handleScan}
-                      facingMode='front'
+                      facingMode={this.state.cameraOption}
                     />
                   )}
                 </div>
-                <button className="btn btn-primary btn-lg" onClick={() => this.handerCamra()}>
-                  {this.state.isCamraEnable ? 'ScanMe' : 'Scan to Associate'}
-                </button>
+                <div className="d-flex align-items-center">
+                  <button className="btn btn-primary btn-lg" onClick={() => this.handerCamera()}>
+                    {this.state.isCamraEnable ? 'ScanMe' : 'Scan to Associate'}
+                  </button>
+                  {this.state.isCamraEnable && (
+                    <a href="#" className="inherit-clr" onClick={this.handleCameraFlip}><i className="fa fa-camera" aria-hidden="true"></i></a>
+                  )}
+                </div>
+                
               </div>
             )}
             
