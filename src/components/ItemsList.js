@@ -9,10 +9,10 @@ class ItemsList extends Component {
     state = {
         scanData:'',
         items: [
-            {id: '0', imgUrl: '/images/img0.png', imgTitle:'', title: 'List-based media 1', detail: 'Cras sit amet nibh libero. Nulla vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.'},
-            {id: '1', imgUrl: '/images/img1.png', imgTitle:'', title: 'List-based media 2', detail: 'Cras sit amet nibh libero. Nulla vulputate at, tempus viverra turpis.'}
+            {sku: '11', imgUrl: '/images/img0.png', imgTitle:'', imgName:'img0.png', title: 'List-based media 1', detail: 'Cras sit amet nibh libero. Nulla vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.'},
+            {sku: '12', imgUrl: '/images/img1.png', imgTitle:'', imgName:'img1.png', title: 'List-based media 2', detail: 'Cras sit amet nibh libero. Nulla vulputate at, tempus viverra turpis.'}
         ],
-        selectedItem:{},
+        selectedItem:'',
         currentItemIndex: null
         
     }
@@ -21,13 +21,11 @@ class ItemsList extends Component {
         this.setState({
             scanData: this.props.scanData
         })
-        console.log('this.props.currentItemIndex', this.state.currentItemIndex)
+        // console.log('this.props.currentItemIndex scanData',this.props.scanData)
     }
     componentWillReceiveProps(nextProps) {
-        
-       
         if(nextProps.scanData !== this.props.scanData){
-            console.log('nextProps updated', nextProps)
+            // console.log('nextProps updated', nextProps)
             this.setState({
                 scanData: nextProps.scanData
             })
@@ -35,16 +33,24 @@ class ItemsList extends Component {
     }
     handleData(item, index) {
 
+        // this.setState({
+        //     selectedItem: {
+        //         scanData : this.state.scanData,
+        //         selectedItem: item.title
+        //     },
+        //     currentItemIndex: index
+        // });
+        const skuId = this.state.scanData.replace(':','');
         this.setState({
-            selectedItem: {
-                scanData : this.state.scanData,
-                selectedItem: item.title
-            },
+            selectedItem: `sku:${skuId}:${item.imgName}`,
             currentItemIndex: index
-        })
+        });
+        // sku:510:Dorites.jpg
+        
     }
     handleClick = () => {
-        axios.post('http://localhost:9090', this.state.selectedItem)
+        console.log('this.state.selectedItem', this.state.selectedItem)
+        axios.post('http://137.135.79.84:9090', this.state.selectedItem)
         .then(function (response) {
             console.log(response);
         })
@@ -53,9 +59,14 @@ class ItemsList extends Component {
         });
     }
     render() {
+        const { scanData } = this.state;
+        const data = scanData.split(':');
+        let selfId = data[0];
+        let pusherId = data[1];
+
         return(
             <React.Fragment>
-                <h3 className="hdr">Self ID:  <span>7</span> Pusher ID: <span> 3</span></h3>
+                <h3 className="hdr">Self ID:  <span>{selfId}</span> Pusher ID: <span> {pusherId}</span></h3>
                 <ul className="list-unstyled">
                     {this.state.items.map((item, i)=> (
                         <li className="media" onClick={()=> this.handleData(item, i)} key={i}>
@@ -75,7 +86,8 @@ class ItemsList extends Component {
                     
 
                 </ul>
-                <button className={'btn btn-primary btn-lg btn-save '+(this.state.currentItemIndex ? '': 'disabled')} onClick={this.handleClick}>Save</button>
+                {/* <button className={'btn btn-primary btn-lg btn-save '+(this.state.currentItemIndex >= '0' ? '': 'disabled')} onClick={this.handleClick}>Save</button> */}
+                <button className={'btn btn-primary btn-lg btn-save'} onClick={this.handleClick}>Save</button>
             </React.Fragment>
         )
     }
