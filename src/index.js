@@ -2,7 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { basename } from "./config";
-import "./index.scss";
+import 'bootstrap/dist/css/bootstrap.min.css';
+/* // Import Font Awesome Icons Set */
+import 'font-awesome/css/font-awesome.min.css';
+import "./index.css";
 import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 const renderApp = () => (
