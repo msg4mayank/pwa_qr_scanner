@@ -45,6 +45,7 @@ class ScanProduct extends Component {
               <div className="device-container">
                 <div className="camra-section">
                   <QrReader
+                    style={{ height: "200px", width: "350px" }}
                     delay={this.state.delay}
                     onError={this.handleError}
                     onScan={this.handleScan}

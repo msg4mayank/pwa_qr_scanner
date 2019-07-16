@@ -31,7 +31,7 @@ var connectionString =
   "HostName=QRSCAN.azure-devices.net;DeviceId=QR_scan;SharedAccessKey=ctMFOExCLgRxAjPldFhFD+He6Ya/0apovJMFakKWxnI=";
 if (!connectionString) {
   //console.log('Please set the DEVICE_CONNECTION_STRING environment variable.');
-  //process.exit(-1);
+  process.exit(-1);
 }
 var client = Client.fromConnectionString(connectionString, Protocol);
 const app = express();
@@ -39,10 +39,9 @@ const app = express();
 app.use(cors({ origin: true }));
 
 // Add middleware to authenticate requests
-app.use(myMiddleware);
+//app.use(myMiddleware);
 
 // build multiple CRUD interfaces:
-app.get("/:id", (req, res) => res.send(Widgets.getById(req.params.id)));
 app.post("/", (req, res) => {
   //var newCustomer = req.body;
   console.log(req.body);

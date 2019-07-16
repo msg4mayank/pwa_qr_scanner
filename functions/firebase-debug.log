@@ -1,0 +1,37 @@
+[debug] [2019-07-16T13:56:25.692Z] ----------------------------------------------------------------------
+[debug] [2019-07-16T13:56:25.694Z] Command:       C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\firebase-tools\lib\bin\firebase.js experimental:functions:shell
+[debug] [2019-07-16T13:56:25.695Z] CLI Version:   7.0.2
+[debug] [2019-07-16T13:56:25.695Z] Platform:      win32
+[debug] [2019-07-16T13:56:25.695Z] Node Version:  v10.3.0
+[debug] [2019-07-16T13:56:25.700Z] Time:          Tue Jul 16 2019 19:26:25 GMT+0530 (Sri Lanka Standard Time)
+[debug] [2019-07-16T13:56:25.700Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-07-16T13:56:25.739Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-07-16T13:56:25.750Z] > authorizing via signed-in user
+[debug] [2019-07-16T13:56:25.751Z] [iam] checking project fir-1519f for permissions ["firebase.projects.get"]
+[debug] [2019-07-16T13:56:25.753Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/fir-1519f:testIamPermissions  
+
+[debug] [2019-07-16T13:56:27.767Z] <<< HTTP RESPONSE 200
+[warn] !  Your requested "node" version "8" doesn't match your global version "10"
+[debug] [2019-07-16T13:56:27.806Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/fir-1519f  
+ 
+[debug] [2019-07-16T13:56:29.640Z] <<< HTTP RESPONSE 200
+[debug] [2019-07-16T13:56:29.641Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/680267455925:getServerAppConfig  
+ 
+[debug] [2019-07-16T13:56:30.457Z] <<< HTTP RESPONSE 200
+[info] +  functions: Emulator started at http://localhost:5001
+[debug] [2019-07-16T13:56:30.467Z] [functions] Watching "C:\Users\madan.l\Projects\RandD\React\pepsico\pwa_qr_scanner\functions" for Cloud Functions...
+[debug] [2019-07-16T13:56:36.859Z] DEBUG: Functions runtime initialized.
+[debug] [2019-07-16T13:56:36.861Z] DEBUG: Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[warn] !  The Cloud Functions emulator requires the module "firebase-admin" to be version >8.0.0 so your version is too old. You can probably fix this by running "npm install firebase-admin@latest" in your functions directory.
+[debug] [2019-07-16T13:56:36.949Z] [functions] Your functions could not be parsed due to an issue with your node_modules (see above)
+[debug] [2019-07-16T14:00:02.056Z] DEBUG: File C:\Users\madan.l\Projects\RandD\React\pepsico\pwa_qr_scanner\functions\index.js changed, reloading triggers
+[debug] [2019-07-16T14:00:16.766Z] DEBUG: File C:\Users\madan.l\Projects\RandD\React\pepsico\pwa_qr_scanner\functions\index.js changed, reloading triggers
+[debug] [2019-07-16T14:00:23.621Z] DEBUG: Functions runtime initialized.
+[debug] [2019-07-16T14:00:23.624Z] DEBUG: Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[warn] !  The Cloud Functions emulator requires the module "firebase-admin" to be version >8.0.0 so your version is too old. You can probably fix this by running "npm install firebase-admin@latest" in your functions directory.
+[debug] [2019-07-16T14:00:23.742Z] [functions] Your functions could not be parsed due to an issue with your node_modules (see above)
+[debug] [2019-07-16T14:00:26.367Z] DEBUG: Functions runtime initialized.
+[debug] [2019-07-16T14:00:26.369Z] DEBUG: Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"protect_env":true,"admin_stubs":true}
+[warn] !  The Cloud Functions emulator requires the module "firebase-admin" to be version >8.0.0 so your version is too old. You can probably fix this by running "npm install firebase-admin@latest" in your functions directory.
+[debug] [2019-07-16T14:00:26.538Z] [functions] Your functions could not be parsed due to an issue with your node_modules (see above)

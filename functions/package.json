@@ -1,5 +1,5 @@
 {
-  "name": "Connect Azure",
+  "name": "connectazure",
   "description": "Generate connection with azure Firebase Functions sample",
   "dependencies": {
     "azure-iot-device": "^1.7.1",
