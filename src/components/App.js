@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import QrReader from 'react-qr-scanner';
+/* import QrReader from 'react-qr-scanner';
 
 import ItemsList from "./ItemsList";
 
 
 import Home from './Home';
-import ScanProduct from './ScanProduct';
+import ScanProduct from './ScanProduct'; */
 
 class App extends Component {
 
-  handerCamera () {
+  handerCamera() {
     this.props.history.push('/scanproduct');
   }
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import img0 from "../images/img0.png";
-import img1 from "../images/img1.png";
-import img2 from "../images/img2.png";
+/* import img1 from "../images/img1.png";
+import img2 from "../images/img2.png"; */
 import PepToast from "./PepToast";
 import axios from "axios";
 

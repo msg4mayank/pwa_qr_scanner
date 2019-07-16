@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter } from "react-router-dom";
-import { basename } from "./config";
+/* import { BrowserRouter } from "react-router-dom";
+import { basename } from "./config"; */
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Switch, Route, withRouter } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 /* // Import Font Awesome Icons Set */
 import 'font-awesome/css/font-awesome.min.css';
@@ -23,7 +23,7 @@ const renderApp = () => (
         <Router>
           <Switch>
             <Route exact path="/" component={App} />
-            <Route path="/scanproduct" component={ScanProduct}/>
+            <Route path="/scanproduct" component={ScanProduct} />
           </Switch>
         </Router>
       </div>
