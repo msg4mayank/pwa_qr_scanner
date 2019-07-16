@@ -58,15 +58,16 @@ class ItemsList extends Component {
     this.setState({ toastShow: false });
     const skuId = this.state.scanData.replace(":", "");
     this.setState({
-      selectedItem: `sku:${skuId}:${item.imgName}`,
+      selectedItem: `{"data":"sku:${skuId}:${item.imgName}"}`,
       currentItemIndex: index
     });
     // sku:510:Dorites.jpg
   }
   handleClick = () => {
     console.log("this.state.selectedItem", this.state.selectedItem);
+    const url = window.location.href.indexOf("https") > 0 ? "https://137.135.79.84:9443" : "http://137.135.79.84:9090"
     axios
-      .post("http://137.135.79.84:9090", this.state.selectedItem)
+      .post(url, this.state.selectedItem)
       .then(response => {
         console.log(response);
         this.setState({ toastShow: true });
