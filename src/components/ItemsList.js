@@ -65,7 +65,7 @@ class ItemsList extends Component {
   }
   handleClick = () => {
     console.log("this.state.selectedItem", this.state.selectedItem);
-    const url = window.location.href.indexOf("https") > 0 ? "https://137.135.79.84:9443" : "http://137.135.79.84:9090"
+    const url = window.location.href.indexOf("https") > -1 ? "https://137.135.79.84:9443" : "http://137.135.79.84:9090"
     axios
       .post(url, this.state.selectedItem)
       .then(response => {
