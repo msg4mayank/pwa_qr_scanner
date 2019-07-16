@@ -14,7 +14,6 @@ class ScanProduct extends Component {
             cameraFlip: false,
             cameraOption: 'front'
         }
-
         this.handleScan = this.handleScan.bind(this);
     }
 
@@ -24,7 +23,6 @@ class ScanProduct extends Component {
                 result: data
             })
         }
-
     }
     handleError(err) {
         console.error(err)
@@ -62,7 +60,6 @@ class ScanProduct extends Component {
 
                             </div>
                         )}
-
                         {this.state.result && (
                             <div className="products-cotainer">
                                 <ItemsList scanData={this.state.result}></ItemsList>
