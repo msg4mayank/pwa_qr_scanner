@@ -8,6 +8,17 @@ import axios from "axios";
 class ItemsList extends Component {
   state = {
     toastShow: false,
+    style: {
+      opacity: 1,
+      background: "#4cad10",
+      position: "fixed",
+      margin: "auto",
+      bottom: "-100%",
+      left: 0,
+      right: 0,
+      transition: "0.3s all",
+      color: "#fff"
+    },
     scanData: "",
     items: [
       {
@@ -72,12 +83,14 @@ class ItemsList extends Component {
     axios
       .post(url, this.state.selectedItem)
       .then(response => {
-        console.log(response);
-        this.setState({ toastShow: true });
+        let st = Object.assign({}, this.state.style);
+        st.bottom = "0";
+        this.setState({ style: st });
       })
       .catch(error => {
-        console.log(error);
-        this.setState({ toastShow: false });
+        let st = Object.assign({}, this.state.style);
+        st.bottom = "0";
+        this.setState({ style: st });
       });
   };
   render() {
@@ -118,18 +131,12 @@ class ItemsList extends Component {
           Save
         </button>
         <PepToast
-          toggleToastShow={() => this.setState({ toastShow: false })}
-          show={this.state.toastShow}
-          style={{
-            background: "#4cad10",
-            position: "fixed",
-            margin: "auto",
-            bottom: this.state.toastShow ? "0" : "-100%",
-            left: 0,
-            right: 0,
-            transition: "0.3s all",
-            color: "#fff"
+          toggleToastShow={() => {
+            let st = Object.assign({}, this.state.style);
+            st.bottom = "-100%";
+            this.setState({ style: st });
           }}
+          style={this.state.style}
         />
       </React.Fragment>
     );

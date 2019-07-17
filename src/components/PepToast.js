@@ -7,14 +7,14 @@ class PepToast extends Component {
   }
   componentWillReceiveProps = nextProp => {
     if (nextProp.show) {
-      this.setState({ show: nextProp.show });
+      //this.setState({ show: nextProp.show });
       this.setState({ style: nextProp.style });
       setTimeout(() => {
         let st = Object.assign({}, this.state.style);
         st.bottom = "-100%";
         this.setState({ style: st });
 
-        this.setState({ show: false });
+        //this.setState({ show: false });
       }, 5000);
     }
   };
@@ -23,8 +23,7 @@ class PepToast extends Component {
   render() {
     return (
       <Toast
-        style={this.state.style}
-        show={this.state.show}
+        style={this.props.style}
         onClose={this.props.toggleToastShow}
         animation={true}
       >
