@@ -7,18 +7,16 @@ class PepToast extends Component {
   }
   componentWillReceiveProps = nextProp => {
     if (nextProp.show) {
-      //this.setState({ show: nextProp.show });
       this.setState({ style: nextProp.style });
       setTimeout(() => {
         let st = Object.assign({}, this.state.style);
         st.bottom = "-100%";
         this.setState({ style: st });
 
-        //this.setState({ show: false });
       }, 5000);
     }
   };
-  componentDidMount = () => {};
+  componentDidMount = () => { };
 
   render() {
     return (

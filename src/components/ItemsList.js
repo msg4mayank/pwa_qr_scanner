@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import img0 from "../images/img0.png";
-/* import img1 from "../images/img1.png";
-import img2 from "../images/img2.png"; */
 import PepToast from "./PepToast";
 import axios from "axios";
 
@@ -48,34 +46,23 @@ class ItemsList extends Component {
     this.setState({
       scanData: this.props.scanData
     });
-    // console.log('this.props.currentItemIndex scanData',this.props.scanData)
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.scanData !== this.props.scanData) {
-      // console.log('nextProps updated', nextProps)
       this.setState({
         scanData: nextProps.scanData
       });
     }
   }
   handleData(item, index) {
-    // this.setState({
-    //     selectedItem: {
-    //         scanData : this.state.scanData,
-    //         selectedItem: item.title
-    //     },
-    //     currentItemIndex: index
-    // });
     this.setState({ toastShow: false });
     const skuId = this.state.scanData.replace(":", "");
     this.setState({
       selectedItem: `{"data":"sku:${skuId}:${item.imgName}"}`,
       currentItemIndex: index
     });
-    // sku:510:Dorites.jpg
   }
   handleClick = () => {
-    //https://us-central1-fir-1519f.cloudfunctions.net/widgets/
     console.log("this.state.selectedItem", this.state.selectedItem);
     const url =
       window.location.href.indexOf("https") > -1
@@ -124,7 +111,6 @@ class ItemsList extends Component {
             </li>
           ))}
         </ul>
-        {/* <button className={'btn btn-primary btn-lg btn-save '+(this.state.currentItemIndex >= '0' ? '': 'disabled')} onClick={this.handleClick}>Save</button> */}
         <button
           className={"btn btn-primary btn-lg btn-save"}
           onClick={this.handleClick}
