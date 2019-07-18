@@ -66,8 +66,8 @@ class ItemsList extends Component {
     console.log("this.state.selectedItem", this.state.selectedItem);
     const url =
       window.location.href.indexOf("https") > -1
-        ? "https://qrservice.azurewebsites.net/"
-        : "http://qrservice.azurewebsites.net/";
+        ? "https://qrscan-app.azurewebsites.net/"
+        : "http://qrscan-app.azurewebsites.net/";
     axios
       .post(url, this.state.selectedItem)
       .then(response => {
