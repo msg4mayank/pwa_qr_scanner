@@ -12,7 +12,6 @@ class PepToast extends Component {
         let st = Object.assign({}, this.state.style);
         st.bottom = "-100%";
         this.setState({ style: st });
-
       }, 5000);
     }
   };
