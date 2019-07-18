@@ -75,21 +75,23 @@ class ItemsList extends Component {
     // sku:510:Dorites.jpg
   }
   handleClick = () => {
+    //https://us-central1-fir-1519f.cloudfunctions.net/widgets/
     console.log("this.state.selectedItem", this.state.selectedItem);
     const url =
       window.location.href.indexOf("https") > -1
-        ? "https://us-central1-fir-1519f.cloudfunctions.net/widgets"
-        : "http://137.135.79.84:9090";
+        ? "https://qrservice.azurewebsites.net/"
+        : "http://qrservice.azurewebsites.net/";
     axios
       .post(url, this.state.selectedItem)
       .then(response => {
+        console.log("response ", response);
         let st = Object.assign({}, this.state.style);
         st.bottom = "0";
         this.setState({ style: st });
       })
       .catch(error => {
         let st = Object.assign({}, this.state.style);
-        st.bottom = "0";
+        st.bottom = "-100%";
         this.setState({ style: st });
       });
   };

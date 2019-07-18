@@ -17,8 +17,8 @@
 
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
+const bodyParser = require("body-parser");
 
-admin.initializeApp(functions.config().firebase);
 const express = require("express");
 const cors = require("cors");
 
@@ -29,14 +29,19 @@ var Message = require("azure-iot-device").Message;
 
 var connectionString =
   "HostName=QRSCAN.azure-devices.net;DeviceId=QR_scan;SharedAccessKey=ctMFOExCLgRxAjPldFhFD+He6Ya/0apovJMFakKWxnI=";
+admin.initializeApp(functions.config().firebase);
 if (!connectionString) {
   //console.log('Please set the DEVICE_CONNECTION_STRING environment variable.');
   process.exit(-1);
 }
 var client = Client.fromConnectionString(connectionString, Protocol);
 const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// parse requests of content-type - application/json
+app.use(bodyParser.json());
 // Automatically allow cross-origin requests
-app.use(cors({ origin: true }));
+app.use(cors());
 
 // Add middleware to authenticate requests
 //app.use(myMiddleware);
@@ -46,13 +51,13 @@ app.post("/", (req, res) => {
   //var newCustomer = req.body;
   console.log(req.body);
 
-  client.open(function(err) {
+  client.open(err => {
     if (err) {
       console.error("Could not connect: " + err.message);
     } else {
       console.log("Client connected");
 
-      client.on("error", function(err) {
+      client.on("error", err => {
         console.error(err.message);
         process.exit(-1);
       });
@@ -66,7 +71,7 @@ app.post("/", (req, res) => {
       message.messageId = uuid.v4();
 
       console.log("Sending message: " + message.getData());
-      client.sendEvent(message, function(err) {
+      client.sendEvent(message, err => {
         if (err) {
           console.error("Could not send: " + err.toString());
           process.exit(-1);
