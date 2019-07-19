@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import img0 from "../images/img0.png";
+import imageConf from "../data/image-conf";
+
 import PepToast from "./PepToast";
 import axios from "axios";
 
@@ -18,26 +19,7 @@ class ItemsList extends Component {
       color: "#fff"
     },
     scanData: "",
-    items: [
-      {
-        sku: "11",
-        imgUrl: "/images/img0.png",
-        imgTitle: "",
-        imgName: "img0.png",
-        title: "List-based media 1",
-        detail:
-          "Cras sit amet nibh libero. Nulla vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus."
-      },
-      {
-        sku: "12",
-        imgUrl: "/images/img1.png",
-        imgTitle: "",
-        imgName: "img1.png",
-        title: "List-based media 2",
-        detail:
-          "Cras sit amet nibh libero. Nulla vulputate at, tempus viverra turpis."
-      }
-    ],
+    items: imageConf,
     selectedItem: "",
     currentItemIndex: null
   };
@@ -100,7 +82,7 @@ class ItemsList extends Component {
               onClick={() => this.handleData(item, i)}
               key={i}
             >
-              <img src={img0} className="mr-3" alt={item.imgTitle} />
+              <img src={item.imgUrl} className="mr-3" alt={item.imgTitle} />
               <div className="media-body">
                 <h5 className="mt-0 mb-1">{item.title}</h5>
                 {item.detail}
