@@ -10,7 +10,7 @@ class ScanProduct extends Component {
       result: null,
       items: [],
       cameraFlip: false,
-      cameraOption: "front"
+      cameraOption: "rear"
     };
 
     this.handleScan = this.handleScan.bind(this);
