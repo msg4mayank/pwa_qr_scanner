@@ -40,7 +40,7 @@ class ItemsList extends Component {
     this.setState({ toastShow: false });
     const skuId = this.state.scanData.replace(":", "");
     this.setState({
-      selectedItem: `{"data":"sku:${skuId}:${item.imgName}"}`,
+      selectedItem: `${skuId}:${item.imgName}`,
       currentItemIndex: index
     });
   }
