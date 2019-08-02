@@ -59,6 +59,7 @@ class ItemsList extends Component {
         this.setState({ style: st });
       })
       .catch(error => {
+        console.log("error ", error);
         let st = Object.assign({}, this.state.style);
         st.bottom = "-100%";
         this.setState({ style: st });
