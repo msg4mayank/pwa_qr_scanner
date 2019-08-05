@@ -50,8 +50,9 @@ class ItemsList extends Component {
       window.location.href.indexOf("https") > -1
         ? "https://qrscan-app.azurewebsites.net/"
         : "http://qrscan-app.azurewebsites.net/";
+    // const url ="http://localhost:9090/";
     axios
-      .post(url, this.state.selectedItem)
+      .post(url, {data : this.state.selectedItem})
       .then(response => {
         console.log("response ", response);
         let st = Object.assign({}, this.state.style);
