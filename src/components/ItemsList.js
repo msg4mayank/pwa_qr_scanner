@@ -38,7 +38,8 @@ class ItemsList extends Component {
   }
   handleData(item, index) {
     this.setState({ toastShow: false });
-    const skuId = this.state.scanData.replace(":", "");
+    // const skuId = this.state.scanData.replace(":", "");
+    const skuId = this.state.scanData;
     this.setState({
       selectedItem: `${skuId}:${item.imgName}`,
       currentItemIndex: index
